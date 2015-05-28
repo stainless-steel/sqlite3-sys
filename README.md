@@ -1,6 +1,8 @@
-# sqlite3-sys
+# sqlite3-sys [![Build Status][status-img]][status-url]
 
 The package provides bindings to [SQLite][1].
+
+## [Documentation][doc]
 
 ## Contributing
 
@@ -9,3 +11,7 @@ The package provides bindings to [SQLite][1].
 3. Open a pull request.
 
 [1]: https://www.sqlite.org
+
+[status-img]: https://travis-ci.org/stainless-steel/sqlite3-sys.svg?branch=master
+[status-url]: https://travis-ci.org/stainless-steel/sqlite3-sys
+[doc]: https://stainless-steel.github.io/sqlite3-sys
