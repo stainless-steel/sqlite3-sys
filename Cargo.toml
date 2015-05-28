@@ -1,0 +1,11 @@
+[package]
+name = "sqlite-sys"
+version = "0.0.1"
+authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/stainless-steel/sqlite-sys"
+homepage = "https://github.com/stainless-steel/sqlite-sys"
+documentation = "https://stainless-steel.github.io/sqlite-sys"
+description = "The package provides bindings to SQLite."
+build = "build.rs"
+links = "sqlite3"
