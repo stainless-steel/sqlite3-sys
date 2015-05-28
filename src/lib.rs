@@ -85,7 +85,7 @@ extern "C" {
 
 #[cfg(test)]
 mod tests {
-    use std::ffi::CString;
+    use std::ffi::{CStr, CString};
     use temporary::Directory;
 
     macro_rules! ok(
@@ -102,6 +102,8 @@ mod tests {
 
     #[test]
     fn workflow() {
+        use libc::{c_char, c_int, c_void};
+
         open(|database| unsafe {
             success!(::sqlite3_exec(database, c_str!(
                 "CREATE TABLE `users` (id INTEGER, name VARCHAR(255), age REAL);"
@@ -117,10 +119,38 @@ mod tests {
             success!(::sqlite3_bind_int(statement, 1, 1));
             success!(::sqlite3_bind_text(statement, 2, name.as_ptr(), -1, None));
             success!(::sqlite3_bind_double(statement, 3, 20.99));
-
             assert!(::sqlite3_step(statement) == ::SQLITE_DONE);
-
             success!(::sqlite3_finalize(statement));
+
+            extern fn list(done: *mut c_void, count: c_int, values: *mut *mut c_char,
+                           _: *mut *mut c_char) -> c_int {
+
+                unsafe {
+                    use std::ops::Deref;
+                    assert!(count == 3);
+
+                    assert!(CStr::from_ptr(*values) ==
+                            ok!(CString::new("1")).deref());
+
+                    assert!(CStr::from_ptr(*values.offset(1)) ==
+                            ok!(CString::new("Alice")).deref());
+
+                    assert!(CStr::from_ptr(*values.offset(2)) ==
+                            ok!(CString::new("20.99")).deref());
+
+                    *(done as *mut bool) = true;
+                }
+
+                0
+            }
+
+            let mut done = false;
+
+            success!(::sqlite3_exec(database, c_str!(
+                "SELECT * FROM `users`;"
+            ).as_ptr(), Some(list), &mut done as *mut _ as *mut _, 0 as *mut _));
+
+            assert!(done);
         });
     }
 
