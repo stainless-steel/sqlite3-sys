@@ -1,4 +1,4 @@
-# sqlite-sys
+# sqlite3-sys
 
 The package provides bindings to [SQLite][1].
 
