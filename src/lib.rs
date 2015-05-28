@@ -29,19 +29,19 @@ mod tests {
     );
 
     #[test]
-    fn open() {
-        let directory = setup();
-        let path = directory.path().join("dummy.sqlite3");
-        let path = ok!(CString::new(ok!(path.to_str())));
-
-        let mut sqlite = 0 as *mut super::sqlite3;
+    fn open_close() {
+        let (path, _directory) = setup();
+        let mut sqlite = 0 as *mut ::sqlite3;
         unsafe {
-            success!(super::sqlite3_open(path.as_ptr(), &mut sqlite));
-            success!(super::sqlite3_close(sqlite));
+            success!(::sqlite3_open(path.as_ptr(), &mut sqlite));
+            success!(::sqlite3_close(sqlite));
         }
     }
 
-    fn setup() -> Directory {
-        ok!(Directory::new("sqlite-sys"))
+    fn setup() -> (CString, Directory) {
+        let directory = ok!(Directory::new("sqlite-sys"));
+        let path = directory.path().join("database.sqlite3");
+        let path = ok!(CString::new(ok!(path.to_str())));
+        (path, directory)
     }
 }
