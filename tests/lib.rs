@@ -101,7 +101,7 @@ fn open<F>(mut code: F) where F: FnMut(*mut sqlite3) {
 }
 
 fn setup() -> (CString, Directory) {
-    let directory = ok!(Directory::new("sqlite-sys"));
+    let directory = ok!(Directory::new("sqlite3-sys"));
     let path = directory.path().join("database.sqlite3");
     let path = c_string!(ok!(path.to_str()));
     (path, directory)
