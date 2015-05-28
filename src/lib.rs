@@ -116,6 +116,7 @@ mod tests {
             let name = c_str!("Alice");
             success!(::sqlite3_bind_int(statement, 1, 1));
             success!(::sqlite3_bind_text(statement, 2, name.as_ptr(), -1, None));
+            success!(::sqlite3_bind_double(statement, 3, 20.99));
 
             assert!(::sqlite3_step(statement) == ::SQLITE_DONE);
 
