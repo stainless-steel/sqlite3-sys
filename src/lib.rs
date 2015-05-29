@@ -68,7 +68,6 @@ extern "C" {
     pub fn sqlite3_column_text(stmt: *mut sqlite3_stmt, i: c_int) -> *const c_uchar;
     pub fn sqlite3_errcode(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_errmsg(db: *mut sqlite3) -> *const c_char;
-    pub fn sqlite3_errstr(rc: c_int) -> *const c_char;
 
     pub fn sqlite3_exec(db: *mut sqlite3, sql: *const c_char,
                         callback: Option<sqlite3_exec_callback>, arg: *mut c_void,
