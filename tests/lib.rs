@@ -34,10 +34,9 @@ fn workflow() {
 
         {
             let mut statement = 0 as *mut _;
-            let mut tail = 0 as *const _;
             success!(sqlite3_prepare(database, c_string!(
                 "INSERT INTO `users` (id, name, age) VALUES (?, ?, ?);"
-            ).as_ptr(), -1, &mut statement, &mut tail));
+            ).as_ptr(), -1, &mut statement, 0 as *mut _));
 
             let name = c_string!("Alice");
             success!(sqlite3_bind_int(statement, 1, 1));
@@ -58,10 +57,9 @@ fn workflow() {
 
         {
             let mut statement = 0 as *mut _;
-            let mut tail = 0 as *const _;
             success!(sqlite3_prepare(database, c_string!(
                 "SELECT * FROM `users`;"
-            ).as_ptr(), -1, &mut statement, &mut tail));
+            ).as_ptr(), -1, &mut statement, 0 as *mut _));
 
             assert!(sqlite3_step(statement) == SQLITE_ROW);
             assert!(sqlite3_column_int(statement, 0) == 1);
