@@ -88,6 +88,17 @@ fn workflow() {
     }
 }
 
+#[test]
+fn failure() {
+    open(|database| unsafe {
+        match sqlite3_exec(database, c_string!(":)").as_ptr(), None, 0 as *mut _, 0 as *mut _) {
+            SQLITE_OK => assert!(false),
+            code => assert!(c_str!(sqlite3_errstr(code)) ==
+                            c_string!("SQL logic error or missing database").deref()),
+        }
+    });
+}
+
 fn open<F>(mut code: F) where F: FnMut(*mut sqlite3) {
     let (path, _directory) = setup();
     let mut database = 0 as *mut _;
