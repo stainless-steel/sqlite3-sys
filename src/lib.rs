@@ -48,10 +48,11 @@ pub const SQLITE_WARNING: c_int = 28;
 pub const SQLITE_ROW: c_int = 100;
 pub const SQLITE_DONE: c_int = 101;
 
+pub type sqlite3_bind_callback = extern fn(*mut c_void);
+pub type sqlite3_busy_callback = extern fn(*mut c_void, c_int) -> c_int;
+
 pub type sqlite3_exec_callback = extern fn(*mut c_void, c_int, *mut *mut c_char,
                                            *mut *mut c_char) -> c_int;
-
-pub type sqlite3_bind_callback = extern fn(*mut c_void);
 
 extern "C" {
     pub fn sqlite3_bind_double(stmt: *mut sqlite3_stmt, i: c_int, value: c_double) -> c_int;
@@ -61,6 +62,10 @@ extern "C" {
     pub fn sqlite3_bind_text(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_char, n: c_int,
                              del: Option<sqlite3_bind_callback>) -> c_int;
 
+    pub fn sqlite3_busy_handler(db: *mut sqlite3, busy: Option<sqlite3_busy_callback>,
+                                arg: *mut c_void) -> c_int;
+
+    pub fn sqlite3_busy_timeout(db: *mut sqlite3, ms: c_int) -> c_int;
     pub fn sqlite3_close(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_column_double(stmt: *mut sqlite3_stmt, i: c_int) -> c_double;
     pub fn sqlite3_column_int(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
