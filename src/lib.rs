@@ -49,6 +49,9 @@ extern "C" {
     pub fn sqlite3_errcode(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_errmsg(db: *mut sqlite3) -> *const c_char;
 
+    #[cfg(feature = "edge")]
+    pub fn sqlite3_errstr(code: c_int) -> *const c_char;
+
     pub fn sqlite3_exec(db: *mut sqlite3, sql: *const c_char,
                         callback: Option<sqlite3_exec_callback>, arg: *mut c_void,
                         errmsg: *mut *mut c_char) -> c_int;
