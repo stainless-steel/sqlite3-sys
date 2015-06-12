@@ -67,6 +67,7 @@ extern "C" {
 
     pub fn sqlite3_busy_timeout(db: *mut sqlite3, ms: c_int) -> c_int;
     pub fn sqlite3_close(db: *mut sqlite3) -> c_int;
+    pub fn sqlite3_close_v2(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_column_double(stmt: *mut sqlite3_stmt, i: c_int) -> c_double;
     pub fn sqlite3_column_int(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
     pub fn sqlite3_column_int64(stmt: *mut sqlite3_stmt, i: c_int) -> sqlite3_int64;
@@ -83,8 +84,14 @@ extern "C" {
     pub fn sqlite3_malloc(n: c_int) -> *mut c_void;
     pub fn sqlite3_open(filename: *const c_char, db: *mut *mut sqlite3) -> c_int;
 
+    pub fn sqlite3_open_v2(filename: *const c_char, db: *mut *mut sqlite3, flags: c_int,
+                           vfs: *const c_char) -> c_int;
+
     pub fn sqlite3_prepare(db: *mut sqlite3, sql: *const c_char, n: c_int,
                            stmt: *mut *mut sqlite3_stmt, tail: *mut *const c_char) -> c_int;
+
+    pub fn sqlite3_prepare_v2(db: *mut sqlite3, sql: *const c_char, n: c_int,
+                              stmt: *mut *mut sqlite3_stmt, tail: *mut *const c_char) -> c_int;
 
     pub fn sqlite3_reset(stmt: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_step(stmt: *mut sqlite3_stmt) -> c_int;
