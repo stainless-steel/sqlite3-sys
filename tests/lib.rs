@@ -103,9 +103,20 @@ fn open<F>(mut code: F) where F: FnMut(*mut sqlite3) {
     let (path, _directory) = setup();
     let mut database = 0 as *mut _;
     unsafe {
-        success!(sqlite3_open(path.as_ptr(), &mut database));
+        success!(sqlite3_open_v2(path.as_ptr(), &mut database,
+                                 SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, 0 as *const _));
         code(database);
+        close(database);
+    }
+
+    #[cfg(not(feature = "edge"))]
+    unsafe fn close(database: *mut sqlite3) {
         success!(sqlite3_close(database));
+    }
+
+    #[cfg(feature = "edge")]
+    unsafe fn close(database: *mut sqlite3) {
+        success!(sqlite3_close_v2(database));
     }
 }
 
