@@ -10,11 +10,11 @@ description = "The package provides bindings to SQLite."
 build = "build.rs"
 links = "sqlite3"
 
-[features]
-edge = []
-
 [dependencies]
 libc = "*"
+
+[build-dependencies]
+pkg-config = "*"
 
 [dev-dependencies]
 temporary = "*"

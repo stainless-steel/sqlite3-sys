@@ -39,7 +39,7 @@ extern "C" {
     pub fn sqlite3_busy_timeout(db: *mut sqlite3, ms: c_int) -> c_int;
     pub fn sqlite3_close(db: *mut sqlite3) -> c_int;
 
-    #[cfg(feature = "edge")]
+    #[cfg(feature = "sqlite3-close-v2")]
     pub fn sqlite3_close_v2(db: *mut sqlite3) -> c_int;
 
     pub fn sqlite3_column_double(stmt: *mut sqlite3_stmt, i: c_int) -> c_double;
@@ -49,7 +49,7 @@ extern "C" {
     pub fn sqlite3_errcode(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_errmsg(db: *mut sqlite3) -> *const c_char;
 
-    #[cfg(feature = "edge")]
+    #[cfg(feature = "sqlite3-errstr")]
     pub fn sqlite3_errstr(code: c_int) -> *const c_char;
 
     pub fn sqlite3_exec(db: *mut sqlite3, sql: *const c_char,

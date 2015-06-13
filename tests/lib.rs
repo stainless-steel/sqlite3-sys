@@ -109,12 +109,12 @@ fn open<F>(mut code: F) where F: FnMut(*mut sqlite3) {
         close(database);
     }
 
-    #[cfg(not(feature = "edge"))]
+    #[cfg(not(feature = "sqlite3-close-v2"))]
     unsafe fn close(database: *mut sqlite3) {
         success!(sqlite3_close(database));
     }
 
-    #[cfg(feature = "edge")]
+    #[cfg(feature = "sqlite3-close-v2")]
     unsafe fn close(database: *mut sqlite3) {
         success!(sqlite3_close_v2(database));
     }
