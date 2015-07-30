@@ -12,7 +12,7 @@ The package provides bindings to [SQLite][1].
 
 [1]: https://www.sqlite.org
 
-[version-img]: https://img.shields.io/crates/v/sqlite3-sys.svg
+[version-img]: http://stainless-steel.github.io/images/crates.svg
 [version-url]: https://crates.io/crates/sqlite3-sys
 [status-img]: https://travis-ci.org/stainless-steel/sqlite3-sys.svg?branch=master
 [status-url]: https://travis-ci.org/stainless-steel/sqlite3-sys
