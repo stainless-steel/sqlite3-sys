@@ -1,5 +1,11 @@
 use libc::c_int;
 
+pub const SQLITE_INTEGER: c_int = 1;
+pub const SQLITE_FLOAT:   c_int = 2;
+pub const SQLITE_TEXT:    c_int = 3;
+pub const SQLITE_BLOB:    c_int = 4;
+pub const SQLITE_NULL:    c_int = 5;
+
 pub const SQLITE_OK:         c_int =   0;
 pub const SQLITE_ERROR:      c_int =   1;
 pub const SQLITE_INTERNAL:   c_int =   2;
