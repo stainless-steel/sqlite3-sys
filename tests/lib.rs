@@ -14,7 +14,7 @@ macro_rules! ok(
 );
 
 macro_rules! success(
-    ($result:expr) => (assert!($result == SQLITE_OK));
+    ($result:expr) => (assert_eq!($result, SQLITE_OK));
 );
 
 macro_rules! c_str(
@@ -42,7 +42,7 @@ fn workflow() {
             success!(sqlite3_bind_int(statement, 1, 1));
             success!(sqlite3_bind_text(statement, 2, name.as_ptr(), -1, None));
             success!(sqlite3_bind_double(statement, 3, 20.99));
-            assert!(sqlite3_step(statement) == SQLITE_DONE);
+            assert_eq!(sqlite3_step(statement), SQLITE_DONE);
 
             success!(sqlite3_finalize(statement));
         }
@@ -61,12 +61,12 @@ fn workflow() {
                 "SELECT * FROM `users`;"
             ).as_ptr(), -1, &mut statement, 0 as *mut _));
 
-            assert!(sqlite3_step(statement) == SQLITE_ROW);
-            assert!(sqlite3_column_int(statement, 0) == 1);
-            assert!(c_str!(sqlite3_column_text(statement, 1)) == c_string!("Alice").deref());
-            assert!(sqlite3_column_double(statement, 2) == 20.99);
+            assert_eq!(sqlite3_step(statement), SQLITE_ROW);
+            assert_eq!(sqlite3_column_int(statement, 0), 1);
+            assert_eq!(c_str!(sqlite3_column_text(statement, 1)), c_string!("Alice").deref());
+            assert_eq!(sqlite3_column_double(statement, 2), 20.99);
 
-            assert!(sqlite3_step(statement) == SQLITE_DONE);
+            assert_eq!(sqlite3_step(statement), SQLITE_DONE);
 
             success!(sqlite3_finalize(statement));
         }
@@ -76,11 +76,11 @@ fn workflow() {
                    _: *mut *mut c_char) -> c_int {
 
         unsafe {
-            assert!(count == 3);
+            assert_eq!(count, 3);
 
-            assert!(c_str!(*values) == c_string!("1").deref());
-            assert!(c_str!(*values.offset(1)) == c_string!("Alice").deref());
-            assert!(c_str!(*values.offset(2)) == c_string!("20.99").deref());
+            assert_eq!(c_str!(*values), c_string!("1").deref());
+            assert_eq!(c_str!(*values.offset(1)), c_string!("Alice").deref());
+            assert_eq!(c_str!(*values.offset(2)), c_string!("20.99").deref());
 
             *(done as *mut bool) = true;
         }
@@ -93,8 +93,8 @@ fn failure() {
     open(|database| unsafe {
         match sqlite3_exec(database, c_string!(":)").as_ptr(), None, 0 as *mut _, 0 as *mut _) {
             SQLITE_OK => assert!(false),
-            _ => assert!(c_str!(sqlite3_errmsg(database)) ==
-                         c_string!(r#"unrecognized token: ":""#).deref()),
+            _ => assert_eq!(c_str!(sqlite3_errmsg(database)),
+                            c_string!(r#"unrecognized token: ":""#).deref()),
         }
     });
 }
