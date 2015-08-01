@@ -43,6 +43,7 @@ fn workflow() {
             success!(sqlite3_bind_text(statement, 2, name.as_ptr(), -1, None));
             success!(sqlite3_bind_double(statement, 3, 20.99));
             assert_eq!(sqlite3_step(statement), SQLITE_DONE);
+            assert_eq!(sqlite3_column_count(statement), 0);
 
             success!(sqlite3_finalize(statement));
         }
@@ -62,11 +63,13 @@ fn workflow() {
             ).as_ptr(), -1, &mut statement, 0 as *mut _));
 
             assert_eq!(sqlite3_step(statement), SQLITE_ROW);
+            assert_eq!(sqlite3_column_count(statement), 3);
             assert_eq!(sqlite3_column_int(statement, 0), 1);
             assert_eq!(c_str!(sqlite3_column_text(statement, 1)), c_string!("Alice").deref());
             assert_eq!(sqlite3_column_double(statement, 2), 20.99);
 
             assert_eq!(sqlite3_step(statement), SQLITE_DONE);
+            assert_eq!(sqlite3_column_count(statement), 3);
 
             success!(sqlite3_finalize(statement));
         }

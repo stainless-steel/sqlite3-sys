@@ -42,6 +42,7 @@ extern "C" {
     #[cfg(feature = "sqlite3-close-v2")]
     pub fn sqlite3_close_v2(db: *mut sqlite3) -> c_int;
 
+    pub fn sqlite3_column_count(stmt: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_column_double(stmt: *mut sqlite3_stmt, i: c_int) -> c_double;
     pub fn sqlite3_column_int(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
     pub fn sqlite3_column_int64(stmt: *mut sqlite3_stmt, i: c_int) -> sqlite3_int64;
