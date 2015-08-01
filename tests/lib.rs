@@ -65,7 +65,7 @@ fn workflow() {
             assert_eq!(sqlite3_step(statement), SQLITE_ROW);
             assert_eq!(sqlite3_column_count(statement), 3);
             assert_eq!(sqlite3_column_int(statement, 0), 1);
-            assert_eq!(c_str!(sqlite3_column_text(statement, 1)), c_string!("Alice").deref());
+            assert!(c_str!(sqlite3_column_text(statement, 1)) == c_string!("Alice").deref());
             assert_eq!(sqlite3_column_double(statement, 2), 20.99);
 
             assert_eq!(sqlite3_step(statement), SQLITE_DONE);
@@ -81,9 +81,9 @@ fn workflow() {
         unsafe {
             assert_eq!(count, 3);
 
-            assert_eq!(c_str!(*values), c_string!("1").deref());
-            assert_eq!(c_str!(*values.offset(1)), c_string!("Alice").deref());
-            assert_eq!(c_str!(*values.offset(2)), c_string!("20.99").deref());
+            assert!(c_str!(*values) == c_string!("1").deref());
+            assert!(c_str!(*values.offset(1)) == c_string!("Alice").deref());
+            assert!(c_str!(*values.offset(2)) == c_string!("20.99").deref());
 
             *(done as *mut bool) = true;
         }
@@ -96,8 +96,8 @@ fn failure() {
     open(|database| unsafe {
         match sqlite3_exec(database, c_string!(":)").as_ptr(), None, 0 as *mut _, 0 as *mut _) {
             SQLITE_OK => assert!(false),
-            _ => assert_eq!(c_str!(sqlite3_errmsg(database)),
-                            c_string!(r#"unrecognized token: ":""#).deref()),
+            _ => assert!(c_str!(sqlite3_errmsg(database)) ==
+                         c_string!(r#"unrecognized token: ":""#).deref()),
         }
     });
 }
