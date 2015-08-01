@@ -26,12 +26,25 @@ pub type sqlite3_exec_callback = extern fn(*mut c_void, c_int, *mut *mut c_char,
                                            *mut *mut c_char) -> c_int;
 
 extern "C" {
+    pub fn sqlite3_bind_blob(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_void, n: c_int,
+                             del: Option<sqlite3_bind_callback>) -> c_int;
+
+    pub fn sqlite3_bind_blob64(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_void,
+                               n: sqlite3_uint64, del: Option<sqlite3_bind_callback>) -> c_int;
+
     pub fn sqlite3_bind_double(stmt: *mut sqlite3_stmt, i: c_int, value: c_double) -> c_int;
     pub fn sqlite3_bind_int(stmt: *mut sqlite3_stmt, i: c_int, value: c_int) -> c_int;
     pub fn sqlite3_bind_int64(stmt: *mut sqlite3_stmt, i: c_int, value: sqlite3_int64) -> c_int;
 
     pub fn sqlite3_bind_text(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_char, n: c_int,
                              del: Option<sqlite3_bind_callback>) -> c_int;
+
+    pub fn sqlite3_bind_text16(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_void, n: c_int,
+                               del: Option<sqlite3_bind_callback>) -> c_int;
+
+    pub fn sqlite3_bind_text64(stmt: *mut sqlite3_stmt, i: c_int, data: *const c_char,
+                               n: sqlite3_uint64, del: Option<sqlite3_bind_callback>,
+                               encoding: c_uchar) -> c_int;
 
     pub fn sqlite3_busy_handler(db: *mut sqlite3, busy: Option<sqlite3_busy_callback>,
                                 arg: *mut c_void) -> c_int;
@@ -44,11 +57,13 @@ extern "C" {
 
     pub fn sqlite3_column_blob(stmt: *mut sqlite3_stmt, i: c_int) -> *const c_void;
     pub fn sqlite3_column_bytes(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
+    pub fn sqlite3_column_bytes16(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
     pub fn sqlite3_column_count(stmt: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_column_double(stmt: *mut sqlite3_stmt, i: c_int) -> c_double;
     pub fn sqlite3_column_int(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
     pub fn sqlite3_column_int64(stmt: *mut sqlite3_stmt, i: c_int) -> sqlite3_int64;
     pub fn sqlite3_column_text(stmt: *mut sqlite3_stmt, i: c_int) -> *const c_uchar;
+    pub fn sqlite3_column_text16(stmt: *mut sqlite3_stmt, i: c_int) -> *const c_void;
     pub fn sqlite3_column_type(stmt: *mut sqlite3_stmt, i: c_int) -> c_int;
     pub fn sqlite3_errcode(db: *mut sqlite3) -> c_int;
     pub fn sqlite3_errmsg(db: *mut sqlite3) -> *const c_char;
