@@ -12,12 +12,17 @@ fn main() {
         Some(version) => version,
         _ => return,
     };
+    let mut features = vec![];
     if version >= [3, 7, 14] {
-        println!(r#"cargo:rustc-cfg=feature="sqlite3-close-v2""#);
+        features.push("sqlite3-close-v2");
     }
     if version >= [3, 7, 15] {
-        println!(r#"cargo:rustc-cfg=feature="sqlite3-errstr""#);
+        features.push("sqlite3-errstr");
     }
+    for feature in &features {
+        println!(r#"cargo:rustc-cfg=feature="{}""#, feature);
+    }
+    println!("cargo:features={}", join(&features));
 }
 
 fn parse(line: &str) -> Option<[u32; 3]> {
@@ -29,4 +34,15 @@ fn parse(line: &str) -> Option<[u32; 3]> {
         }
     }
     Some(version)
+}
+
+fn join(chunks: &[&str]) -> String {
+    let mut buffer = String::new();
+    for (i, chunk) in chunks.iter().enumerate() {
+        if i > 0 {
+            buffer.push(' ');
+        }
+        buffer.push_str(chunk);
+    }
+    buffer
 }
