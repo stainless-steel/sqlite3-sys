@@ -1,4 +1,4 @@
-#![allow(non_camel_case_types)]
+#![allow(improper_ctypes, non_camel_case_types)]
 
 extern crate libc;
 
