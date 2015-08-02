@@ -77,6 +77,7 @@ extern "C" {
 
     pub fn sqlite3_finalize(stmt: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_free(p: *mut c_void);
+    pub fn sqlite3_libversion_number() -> c_int;
     pub fn sqlite3_malloc(n: c_int) -> *mut c_void;
     pub fn sqlite3_open(filename: *const c_char, db: *mut *mut sqlite3) -> c_int;
 

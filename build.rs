@@ -23,6 +23,7 @@ fn main() {
         println!(r#"cargo:rustc-cfg=feature="{}""#, feature);
     }
     println!("cargo:features={}", join(&features));
+    println!("cargo:version={}.{}.{}", version[0], version[1], version[2]);
 }
 
 fn parse(line: &str) -> Option<[u32; 3]> {
