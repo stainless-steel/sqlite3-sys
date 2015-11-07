@@ -1,12 +1,17 @@
 language: rust
 sudo: false
+rust:
+  - stable
+  - beta
+  - nightly
 
 after_success:
   - curl https://stainless-steel.github.io/travis/after_success.sh | bash
 
 env:
   global:
-    secure: ril523ErDHRGhbyOahM5iwd2wckYyFdh6+8e2qXY05IZolw6TeWW2TTLd9P7TqNuqDH/+JBT3Xj6oN4nStUu17K0Fk7g+6+8PP/QhjaHpSV2EuTut1zST+Ad5XKdNKRXndbjn1unpFoq/EMkz/P4AKGp4xn+FpRxpQJE0h45FUX1XAIOe1w83Kzrr83KI/5RdMnBsqLkijyesV9cNT93go9ry0iCyQ6/PLPY764koL/AB1Q3yayM5nYr0YHMeFQSynDq09AhBngJ2ca1miqN13veP9BsIgg0wZSM4txlsNcuPqSo5KojGAZ64/a3HZ2yksbhyQyokjKCxlYvL6eOUjsXTJxJ1Q+iV4sPA/IqDZfYwYvh+3vwBaJdjEAUreX47m9W9+g1x6Lu9HpGskMmaGTPFdsp01IHdYhJ7yYxTZv8MsW8+3L6btUYUioN/06onF7Uvq/ne85JAC48pEdnHDsv6XlI8jkKlSF2MHBGBDLGmVQSMdKd/8xtCwHt+JcXdDpdQqgUbf3Ffhs+ZTe+vMxSsidSxyFbRtHqMiqElaG3hF8Rs8aaRoL6+McLnKLkFH/6nePq4XVbOsc7tI9jhbaZb2kWfCAKXwkZzsmI2HUd8Ali87yOHV0lQ28/E2Tw/YsJNGdtw5XjvDRPNQWnbB9jeFatpNNPKvzcdVz4Mcc=
+    - RUSTDOC_VERSION=stable
+    - secure: ril523ErDHRGhbyOahM5iwd2wckYyFdh6+8e2qXY05IZolw6TeWW2TTLd9P7TqNuqDH/+JBT3Xj6oN4nStUu17K0Fk7g+6+8PP/QhjaHpSV2EuTut1zST+Ad5XKdNKRXndbjn1unpFoq/EMkz/P4AKGp4xn+FpRxpQJE0h45FUX1XAIOe1w83Kzrr83KI/5RdMnBsqLkijyesV9cNT93go9ry0iCyQ6/PLPY764koL/AB1Q3yayM5nYr0YHMeFQSynDq09AhBngJ2ca1miqN13veP9BsIgg0wZSM4txlsNcuPqSo5KojGAZ64/a3HZ2yksbhyQyokjKCxlYvL6eOUjsXTJxJ1Q+iV4sPA/IqDZfYwYvh+3vwBaJdjEAUreX47m9W9+g1x6Lu9HpGskMmaGTPFdsp01IHdYhJ7yYxTZv8MsW8+3L6btUYUioN/06onF7Uvq/ne85JAC48pEdnHDsv6XlI8jkKlSF2MHBGBDLGmVQSMdKd/8xtCwHt+JcXdDpdQqgUbf3Ffhs+ZTe+vMxSsidSxyFbRtHqMiqElaG3hF8Rs8aaRoL6+McLnKLkFH/6nePq4XVbOsc7tI9jhbaZb2kWfCAKXwkZzsmI2HUd8Ali87yOHV0lQ28/E2Tw/YsJNGdtw5XjvDRPNQWnbB9jeFatpNNPKvzcdVz4Mcc=
 
 notifications:
   email: false

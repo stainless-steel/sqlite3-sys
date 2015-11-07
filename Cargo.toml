@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-sys"
-version = "0.6.6"
+version = "0.6.7"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/stainless-steel/sqlite3-sys"
@@ -11,10 +11,10 @@ build = "build.rs"
 links = "sqlite3"
 
 [dependencies]
-libc = "*"
+libc = "0.2"
 
 [build-dependencies]
-pkg-config = "*"
+pkg-config = "0.3"
 
 [dev-dependencies]
-temporary = "*"
+temporary = "0.5"
