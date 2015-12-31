@@ -1,3 +1,7 @@
+//! Bindings to [SQlite][1].
+//!
+//! [1]: https://www.sqlite.org
+
 #![allow(improper_ctypes, non_camel_case_types)]
 
 extern crate libc;
