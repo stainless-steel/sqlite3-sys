@@ -109,17 +109,7 @@ fn open<F>(mut code: F) where F: FnMut(*mut sqlite3) {
         success!(sqlite3_open_v2(path.as_ptr(), &mut database,
                                  SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, 0 as *const _));
         code(database);
-        close(database);
-    }
-
-    #[cfg(not(feature = "sqlite3-close-v2"))]
-    unsafe fn close(database: *mut sqlite3) {
         success!(sqlite3_close(database));
-    }
-
-    #[cfg(feature = "sqlite3-close-v2")]
-    unsafe fn close(database: *mut sqlite3) {
-        success!(sqlite3_close_v2(database));
     }
 }
 
