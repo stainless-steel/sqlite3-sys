@@ -13,9 +13,9 @@ extern "C" {
     pub fn sqlite3_backup_remaining(p: *mut sqlite3_backup) -> c_int;
     pub fn sqlite3_backup_step(p: *mut sqlite3_backup, n: c_int) -> c_int;
     pub fn sqlite3_bind_blob(p: *mut sqlite3_stmt, n: c_int, p: *const c_void, n: c_int,
-                             f: Option<sqlite3_void_callback>) -> c_int;
+                             f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_bind_blob64(p: *mut sqlite3_stmt, n: c_int, p: *const c_void, n: sqlite3_uint64,
-                               f: Option<sqlite3_void_callback>) -> c_int;
+                               f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_bind_double(p: *mut sqlite3_stmt, n: c_int, n: c_double) -> c_int;
     pub fn sqlite3_bind_int(p: *mut sqlite3_stmt, n: c_int, n: c_int) -> c_int;
     pub fn sqlite3_bind_int64(p: *mut sqlite3_stmt, n: c_int, n: sqlite3_int64) -> c_int;
@@ -24,11 +24,11 @@ extern "C" {
     pub fn sqlite3_bind_parameter_index(p: *mut sqlite3_stmt, p: *const c_char) -> c_int;
     pub fn sqlite3_bind_parameter_name(p: *mut sqlite3_stmt, n: c_int) -> *const c_char;
     pub fn sqlite3_bind_text(p: *mut sqlite3_stmt, n: c_int, p: *const c_char, n: c_int,
-                             f: Option<sqlite3_void_callback>) -> c_int;
+                             f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_bind_text16(p: *mut sqlite3_stmt, n: c_int, p: *const c_void, n: c_int,
-                               f: Option<sqlite3_void_callback>) -> c_int;
+                               f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_bind_text64(p: *mut sqlite3_stmt, n: c_int, p: *const c_char, n: sqlite3_uint64,
-                               f: Option<sqlite3_void_callback>, n: c_uchar) -> c_int;
+                               f: Option<sqlite3_callback>, n: c_uchar) -> c_int;
     pub fn sqlite3_bind_value(p: *mut sqlite3_stmt, n: c_int, p: *const sqlite3_value) -> c_int;
     pub fn sqlite3_bind_zeroblob(p: *mut sqlite3_stmt, n: c_int, n: c_int) -> c_int;
     pub fn sqlite3_bind_zeroblob64(p: *mut sqlite3_stmt, n: c_int, n: sqlite3_uint64) -> c_int;
@@ -86,7 +86,7 @@ extern "C" {
                                       f: Option<sqlite3_create_collation16_callback>) -> c_int;
     pub fn sqlite3_create_collation_v2(p: *mut sqlite3, p: *const c_char, n: c_int, p: *mut c_void,
                                        f: Option<sqlite3_create_collation_v2_callback>,
-                                       f: Option<sqlite3_void_callback>) -> c_int;
+                                       f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_create_function(p: *mut sqlite3, p: *const c_char, n: c_int, n: c_int,
                                    p: *mut c_void, f: Option<sqlite3_create_function_callback1>,
                                    f: Option<sqlite3_create_function_callback1>,
@@ -99,11 +99,11 @@ extern "C" {
                                       p: *mut c_void, f: Option<sqlite3_create_function_callback1>,
                                       f: Option<sqlite3_create_function_callback1>,
                                       f: Option<sqlite3_create_function_callback2>,
-                                      f: Option<sqlite3_void_callback>) -> c_int;
+                                      f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_create_module(p: *mut sqlite3, p: *const c_char, p: *const sqlite3_module,
                                  p: *mut c_void) -> c_int;
     pub fn sqlite3_create_module_v2(p: *mut sqlite3, p: *const c_char, p: *const sqlite3_module,
-                                    p: *mut c_void, f: Option<sqlite3_void_callback>) -> c_int;
+                                    p: *mut c_void, f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_data_count(p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_db_cacheflush(p: *mut sqlite3) -> c_int;
 
@@ -188,9 +188,9 @@ extern "C" {
     pub fn sqlite3_reset(p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_reset_auto_extension();
     pub fn sqlite3_result_blob(p: *mut sqlite3_context, p: *const c_void, n: c_int,
-                               f: Option<sqlite3_void_callback>);
+                               f: Option<sqlite3_callback>);
     pub fn sqlite3_result_blob64(p: *mut sqlite3_context, p: *const c_void, n: sqlite3_uint64,
-                                 f: Option<sqlite3_void_callback>);
+                                 f: Option<sqlite3_callback>);
     pub fn sqlite3_result_double(p: *mut sqlite3_context, n: c_double);
     pub fn sqlite3_result_error(p: *mut sqlite3_context, p: *const c_char, n: c_int);
     pub fn sqlite3_result_error16(p: *mut sqlite3_context, p: *const c_void, n: c_int);
@@ -203,24 +203,24 @@ extern "C" {
     pub fn sqlite3_result_null(p: *mut sqlite3_context);
     pub fn sqlite3_result_subtype(p: *mut sqlite3_context, n: c_uint);
     pub fn sqlite3_result_text(p: *mut sqlite3_context, p: *const c_char, n: c_int,
-                               f: Option<sqlite3_void_callback>);
+                               f: Option<sqlite3_callback>);
     pub fn sqlite3_result_text16(p: *mut sqlite3_context, p: *const c_void, n: c_int,
-                                 f: Option<sqlite3_void_callback>);
+                                 f: Option<sqlite3_callback>);
     pub fn sqlite3_result_text16be(p: *mut sqlite3_context, p: *const c_void, n: c_int,
-                                   f: Option<sqlite3_void_callback>);
+                                   f: Option<sqlite3_callback>);
     pub fn sqlite3_result_text16le(p: *mut sqlite3_context, p: *const c_void, n: c_int,
-                                   f: Option<sqlite3_void_callback>);
+                                   f: Option<sqlite3_callback>);
     pub fn sqlite3_result_text64(p: *mut sqlite3_context, p: *const c_char, n: sqlite3_uint64,
-                                 f: Option<sqlite3_void_callback>, n: c_uchar);
+                                 f: Option<sqlite3_callback>, n: c_uchar);
     pub fn sqlite3_result_value(p: *mut sqlite3_context, p: *mut sqlite3_value);
     pub fn sqlite3_result_zeroblob(p: *mut sqlite3_context, n: c_int);
     pub fn sqlite3_result_zeroblob64(p: *mut sqlite3_context, n: sqlite3_uint64) -> c_int;
-    pub fn sqlite3_rollback_hook(p: *mut sqlite3, f: Option<sqlite3_void_callback>, p: *mut c_void)
+    pub fn sqlite3_rollback_hook(p: *mut sqlite3, f: Option<sqlite3_callback>, p: *mut c_void)
                                  -> *mut c_void;
     pub fn sqlite3_set_authorizer(p: *mut sqlite3, f: Option<sqlite3_set_authorizer_callback>,
                                   p: *mut c_void) -> c_int;
     pub fn sqlite3_set_auxdata(p: *mut sqlite3_context, n: c_int, p: *mut c_void,
-                               f: Option<sqlite3_void_callback>);
+                               f: Option<sqlite3_callback>);
     pub fn sqlite3_shutdown() -> c_int;
     pub fn sqlite3_sleep(n: c_int) -> c_int;
     pub fn sqlite3_snapshot_free(p: *mut sqlite3_snapshot);

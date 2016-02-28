@@ -14,7 +14,7 @@ use libc::{c_char, c_int, c_longlong, c_ulonglong, c_void};
 pub type sqlite3_int64 = c_longlong;
 pub type sqlite3_uint64 = c_ulonglong;
 
-pub type sqlite3_void_callback = extern "C" fn(*mut c_void);
+pub type sqlite3_callback = extern "C" fn(*mut c_void);
 
 pub type sqlite3_auto_extension_callback = extern "C" fn();
 pub type sqlite3_busy_callback = extern "C" fn(*mut c_void, c_int) -> c_int;
