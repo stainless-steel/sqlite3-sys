@@ -12,7 +12,9 @@ homepage = "https://github.com/stainless-steel/sqlite3-sys"
 repository = "https://github.com/stainless-steel/sqlite3-sys"
 
 [features]
-default = ["sqlite3-provider"]
+default = ["standard"]
+
+standard = ["sqlite3-provider"]
 sqlcipher = ["sqlcipher-provider"]
 
 [dependencies]
