@@ -6,6 +6,12 @@
 
 extern crate libc;
 
+#[cfg(not(feature = "sqlcipher"))]
+extern crate sqlite3_provider;
+
+#[cfg(feature = "sqlcipher")]
+extern crate sqlcipher_provider;
+
 use libc::{c_char, c_double, c_int, c_longlong, c_uchar, c_ulonglong, c_void};
 
 mod constants;

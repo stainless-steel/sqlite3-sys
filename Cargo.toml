@@ -7,19 +7,24 @@ description = "The package provides bindings to SQLite."
 documentation = "https://stainless-steel.github.io/sqlite3-sys"
 homepage = "https://github.com/stainless-steel/sqlite3-sys"
 repository = "https://github.com/stainless-steel/sqlite3-sys"
-build = "build.rs"
-links = "sqlite3"
+
+[features]
+default = ["sqlite3-provider"]
+sqlcipher = ["sqlcipher-provider"]
 
 [dependencies]
 libc = "0.2"
+
+[dependencies.sqlite3-provider]
+version = "0.0.1"
+optional = true
+
+[dependencies.sqlcipher-provider]
+version = "0.0.1"
+optional = true
 
 [build-dependencies]
 pkg-config = "0.3"
 
 [dev-dependencies]
 temporary = "0.5"
-
-[features]
-# Link against sqlcipher, instead of sqlite3, enabling support for
-# transparent database encryption.
-sqlcipher = []
