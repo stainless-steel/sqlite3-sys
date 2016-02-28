@@ -26,8 +26,5 @@ optional = true
 version = "0.0.1"
 optional = true
 
-[build-dependencies]
-pkg-config = "0.3"
-
 [dev-dependencies]
 temporary = "0.5"
