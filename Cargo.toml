@@ -2,7 +2,10 @@
 name = "sqlite3-sys"
 version = "0.6.7"
 license = "Apache-2.0/MIT"
-authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+authors = [
+  "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
+  "Ivan Ukhov <ivan.ukhov@gmail.com>",
+]
 description = "The package provides bindings to SQLite."
 documentation = "https://stainless-steel.github.io/sqlite3-sys"
 homepage = "https://github.com/stainless-steel/sqlite3-sys"
