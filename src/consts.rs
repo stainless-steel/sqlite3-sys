@@ -1,11 +1,5 @@
 use libc::c_int;
 
-pub const SQLITE_INTEGER: c_int = 1;
-pub const SQLITE_FLOAT  : c_int = 2;
-pub const SQLITE_TEXT   : c_int = 3;
-pub const SQLITE_BLOB   : c_int = 4;
-pub const SQLITE_NULL   : c_int = 5;
-
 pub const SQLITE_OK        : c_int =   0;
 pub const SQLITE_ERROR     : c_int =   1;
 pub const SQLITE_INTERNAL  : c_int =   2;
@@ -112,3 +106,264 @@ pub const SQLITE_OPEN_FULLMUTEX     : c_int = 0x00010000;
 pub const SQLITE_OPEN_SHAREDCACHE   : c_int = 0x00020000;
 pub const SQLITE_OPEN_PRIVATECACHE  : c_int = 0x00040000;
 pub const SQLITE_OPEN_WAL           : c_int = 0x00080000;
+
+pub const SQLITE_IOCAP_ATOMIC               : c_int = 0x00000001;
+pub const SQLITE_IOCAP_ATOMIC512            : c_int = 0x00000002;
+pub const SQLITE_IOCAP_ATOMIC1K             : c_int = 0x00000004;
+pub const SQLITE_IOCAP_ATOMIC2K             : c_int = 0x00000008;
+pub const SQLITE_IOCAP_ATOMIC4K             : c_int = 0x00000010;
+pub const SQLITE_IOCAP_ATOMIC8K             : c_int = 0x00000020;
+pub const SQLITE_IOCAP_ATOMIC16K            : c_int = 0x00000040;
+pub const SQLITE_IOCAP_ATOMIC32K            : c_int = 0x00000080;
+pub const SQLITE_IOCAP_ATOMIC64K            : c_int = 0x00000100;
+pub const SQLITE_IOCAP_SAFE_APPEND          : c_int = 0x00000200;
+pub const SQLITE_IOCAP_SEQUENTIAL           : c_int = 0x00000400;
+pub const SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN: c_int = 0x00000800;
+pub const SQLITE_IOCAP_POWERSAFE_OVERWRITE  : c_int = 0x00001000;
+pub const SQLITE_IOCAP_IMMUTABLE            : c_int = 0x00002000;
+
+pub const SQLITE_LOCK_NONE     : c_int = 0;
+pub const SQLITE_LOCK_SHARED   : c_int = 1;
+pub const SQLITE_LOCK_RESERVED : c_int = 2;
+pub const SQLITE_LOCK_PENDING  : c_int = 3;
+pub const SQLITE_LOCK_EXCLUSIVE: c_int = 4;
+
+pub const SQLITE_SYNC_NORMAL  : c_int = 0x00002;
+pub const SQLITE_SYNC_FULL    : c_int = 0x00003;
+pub const SQLITE_SYNC_DATAONLY: c_int = 0x00010;
+
+pub const SQLITE_FCNTL_LOCKSTATE          : c_int =  1;
+pub const SQLITE_FCNTL_GET_LOCKPROXYFILE  : c_int =  2;
+pub const SQLITE_FCNTL_SET_LOCKPROXYFILE  : c_int =  3;
+pub const SQLITE_FCNTL_LAST_ERRNO         : c_int =  4;
+pub const SQLITE_FCNTL_SIZE_HINT          : c_int =  5;
+pub const SQLITE_FCNTL_CHUNK_SIZE         : c_int =  6;
+pub const SQLITE_FCNTL_FILE_POINTER       : c_int =  7;
+pub const SQLITE_FCNTL_SYNC_OMITTED       : c_int =  8;
+pub const SQLITE_FCNTL_WIN32_AV_RETRY     : c_int =  9;
+pub const SQLITE_FCNTL_PERSIST_WAL        : c_int = 10;
+pub const SQLITE_FCNTL_OVERWRITE          : c_int = 11;
+pub const SQLITE_FCNTL_VFSNAME            : c_int = 12;
+pub const SQLITE_FCNTL_POWERSAFE_OVERWRITE: c_int = 13;
+pub const SQLITE_FCNTL_PRAGMA             : c_int = 14;
+pub const SQLITE_FCNTL_BUSYHANDLER        : c_int = 15;
+pub const SQLITE_FCNTL_TEMPFILENAME       : c_int = 16;
+pub const SQLITE_FCNTL_MMAP_SIZE          : c_int = 18;
+pub const SQLITE_FCNTL_TRACE              : c_int = 19;
+pub const SQLITE_FCNTL_HAS_MOVED          : c_int = 20;
+pub const SQLITE_FCNTL_SYNC               : c_int = 21;
+pub const SQLITE_FCNTL_COMMIT_PHASETWO    : c_int = 22;
+pub const SQLITE_FCNTL_WIN32_SET_HANDLE   : c_int = 23;
+pub const SQLITE_FCNTL_WAL_BLOCK          : c_int = 24;
+pub const SQLITE_FCNTL_ZIPVFS             : c_int = 25;
+pub const SQLITE_FCNTL_RBU                : c_int = 26;
+pub const SQLITE_FCNTL_VFS_POINTER        : c_int = 27;
+pub const SQLITE_FCNTL_JOURNAL_POINTER    : c_int = 28;
+
+pub const SQLITE_ACCESS_EXISTS   : c_int = 0;
+pub const SQLITE_ACCESS_READWRITE: c_int = 1;
+pub const SQLITE_ACCESS_READ     : c_int = 2;
+
+pub const SQLITE_SHM_UNLOCK   : c_int = 1;
+pub const SQLITE_SHM_LOCK     : c_int = 2;
+pub const SQLITE_SHM_SHARED   : c_int = 4;
+pub const SQLITE_SHM_EXCLUSIVE: c_int = 8;
+pub const SQLITE_SHM_NLOCK    : c_int = 8;
+
+pub const SQLITE_CONFIG_SINGLETHREAD       : c_int =  1;
+pub const SQLITE_CONFIG_MULTITHREAD        : c_int =  2;
+pub const SQLITE_CONFIG_SERIALIZED         : c_int =  3;
+pub const SQLITE_CONFIG_MALLOC             : c_int =  4;
+pub const SQLITE_CONFIG_GETMALLOC          : c_int =  5;
+pub const SQLITE_CONFIG_SCRATCH            : c_int =  6;
+pub const SQLITE_CONFIG_PAGECACHE          : c_int =  7;
+pub const SQLITE_CONFIG_HEAP               : c_int =  8;
+pub const SQLITE_CONFIG_MEMSTATUS          : c_int =  9;
+pub const SQLITE_CONFIG_MUTEX              : c_int = 10;
+pub const SQLITE_CONFIG_GETMUTEX           : c_int = 11;
+pub const SQLITE_CONFIG_LOOKASIDE          : c_int = 13;
+pub const SQLITE_CONFIG_PCACHE             : c_int = 14;
+pub const SQLITE_CONFIG_GETPCACHE          : c_int = 15;
+pub const SQLITE_CONFIG_LOG                : c_int = 16;
+pub const SQLITE_CONFIG_URI                : c_int = 17;
+pub const SQLITE_CONFIG_PCACHE2            : c_int = 18;
+pub const SQLITE_CONFIG_GETPCACHE2         : c_int = 19;
+pub const SQLITE_CONFIG_COVERING_INDEX_SCAN: c_int = 20;
+pub const SQLITE_CONFIG_SQLLOG             : c_int = 21;
+pub const SQLITE_CONFIG_MMAP_SIZE          : c_int = 22;
+pub const SQLITE_CONFIG_WIN32_HEAPSIZE     : c_int = 23;
+pub const SQLITE_CONFIG_PCACHE_HDRSZ       : c_int = 24;
+pub const SQLITE_CONFIG_PMASZ              : c_int = 25;
+
+pub const SQLITE_DBCONFIG_LOOKASIDE            : c_int = 1001;
+pub const SQLITE_DBCONFIG_ENABLE_FKEY          : c_int = 1002;
+pub const SQLITE_DBCONFIG_ENABLE_TRIGGER       : c_int = 1003;
+pub const SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER: c_int = 1004;
+
+pub const SQLITE_DENY  : c_int = 1;
+pub const SQLITE_IGNORE: c_int = 2;
+
+pub const SQLITE_CREATE_INDEX       : c_int =  1;
+pub const SQLITE_CREATE_TABLE       : c_int =  2;
+pub const SQLITE_CREATE_TEMP_INDEX  : c_int =  3;
+pub const SQLITE_CREATE_TEMP_TABLE  : c_int =  4;
+pub const SQLITE_CREATE_TEMP_TRIGGER: c_int =  5;
+pub const SQLITE_CREATE_TEMP_VIEW   : c_int =  6;
+pub const SQLITE_CREATE_TRIGGER     : c_int =  7;
+pub const SQLITE_CREATE_VIEW        : c_int =  8;
+pub const SQLITE_DELETE             : c_int =  9;
+pub const SQLITE_DROP_INDEX         : c_int = 10;
+pub const SQLITE_DROP_TABLE         : c_int = 11;
+pub const SQLITE_DROP_TEMP_INDEX    : c_int = 12;
+pub const SQLITE_DROP_TEMP_TABLE    : c_int = 13;
+pub const SQLITE_DROP_TEMP_TRIGGER  : c_int = 14;
+pub const SQLITE_DROP_TEMP_VIEW     : c_int = 15;
+pub const SQLITE_DROP_TRIGGER       : c_int = 16;
+pub const SQLITE_DROP_VIEW          : c_int = 17;
+pub const SQLITE_INSERT             : c_int = 18;
+pub const SQLITE_PRAGMA             : c_int = 19;
+pub const SQLITE_READ               : c_int = 20;
+pub const SQLITE_SELECT             : c_int = 21;
+pub const SQLITE_TRANSACTION        : c_int = 22;
+pub const SQLITE_UPDATE             : c_int = 23;
+pub const SQLITE_ATTACH             : c_int = 24;
+pub const SQLITE_DETACH             : c_int = 25;
+pub const SQLITE_ALTER_TABLE        : c_int = 26;
+pub const SQLITE_REINDEX            : c_int = 27;
+pub const SQLITE_ANALYZE            : c_int = 28;
+pub const SQLITE_CREATE_VTABLE      : c_int = 29;
+pub const SQLITE_DROP_VTABLE        : c_int = 30;
+pub const SQLITE_FUNCTION           : c_int = 31;
+pub const SQLITE_SAVEPOINT          : c_int = 32;
+pub const SQLITE_COPY               : c_int =  0;
+pub const SQLITE_RECURSIVE          : c_int = 33;
+
+pub const SQLITE_LIMIT_LENGTH             : c_int =  0;
+pub const SQLITE_LIMIT_SQL_LENGTH         : c_int =  1;
+pub const SQLITE_LIMIT_COLUMN             : c_int =  2;
+pub const SQLITE_LIMIT_EXPR_DEPTH         : c_int =  3;
+pub const SQLITE_LIMIT_COMPOUND_SELECT    : c_int =  4;
+pub const SQLITE_LIMIT_VDBE_OP            : c_int =  5;
+pub const SQLITE_LIMIT_FUNCTION_ARG       : c_int =  6;
+pub const SQLITE_LIMIT_ATTACHED           : c_int =  7;
+pub const SQLITE_LIMIT_LIKE_PATTERN_LENGTH: c_int =  8;
+pub const SQLITE_LIMIT_VARIABLE_NUMBER    : c_int =  9;
+pub const SQLITE_LIMIT_TRIGGER_DEPTH      : c_int = 10;
+pub const SQLITE_LIMIT_WORKER_THREADS     : c_int = 11;
+
+pub const SQLITE_INTEGER: c_int = 1;
+pub const SQLITE_FLOAT  : c_int = 2;
+pub const SQLITE_BLOB   : c_int = 4;
+pub const SQLITE_NULL   : c_int = 5;
+pub const SQLITE3_TEXT  : c_int = 3;
+
+pub const SQLITE_UTF8         : c_int = 1;
+pub const SQLITE_UTF16LE      : c_int = 2;
+pub const SQLITE_UTF16BE      : c_int = 3;
+pub const SQLITE_UTF16        : c_int = 4;
+pub const SQLITE_ANY          : c_int = 5;
+pub const SQLITE_UTF16_ALIGNED: c_int = 8;
+
+pub const SQLITE_DETERMINISTIC: c_int = 0x800;
+
+pub const SQLITE_STATIC   : c_int =  0;
+pub const SQLITE_TRANSIENT: c_int = -1;
+
+pub const SQLITE_INDEX_SCAN_UNIQUE      : c_int =  1;
+pub const SQLITE_INDEX_CONSTRAINT_EQ    : c_int =  2;
+pub const SQLITE_INDEX_CONSTRAINT_GT    : c_int =  4;
+pub const SQLITE_INDEX_CONSTRAINT_LE    : c_int =  8;
+pub const SQLITE_INDEX_CONSTRAINT_LT    : c_int = 16;
+pub const SQLITE_INDEX_CONSTRAINT_GE    : c_int = 32;
+pub const SQLITE_INDEX_CONSTRAINT_MATCH : c_int = 64;
+pub const SQLITE_INDEX_CONSTRAINT_LIKE  : c_int = 65;
+pub const SQLITE_INDEX_CONSTRAINT_GLOB  : c_int = 66;
+pub const SQLITE_INDEX_CONSTRAINT_REGEXP: c_int = 67;
+
+pub const SQLITE_MUTEX_FAST         : c_int =  0;
+pub const SQLITE_MUTEX_RECURSIVE    : c_int =  1;
+pub const SQLITE_MUTEX_STATIC_MASTER: c_int =  2;
+pub const SQLITE_MUTEX_STATIC_MEM   : c_int =  3;
+pub const SQLITE_MUTEX_STATIC_MEM2  : c_int =  4;
+pub const SQLITE_MUTEX_STATIC_OPEN  : c_int =  4;
+pub const SQLITE_MUTEX_STATIC_PRNG  : c_int =  5;
+pub const SQLITE_MUTEX_STATIC_LRU   : c_int =  6;
+pub const SQLITE_MUTEX_STATIC_LRU2  : c_int =  7;
+pub const SQLITE_MUTEX_STATIC_PMEM  : c_int =  7;
+pub const SQLITE_MUTEX_STATIC_APP1  : c_int =  8;
+pub const SQLITE_MUTEX_STATIC_APP2  : c_int =  9;
+pub const SQLITE_MUTEX_STATIC_APP3  : c_int = 10;
+pub const SQLITE_MUTEX_STATIC_VFS1  : c_int = 11;
+pub const SQLITE_MUTEX_STATIC_VFS2  : c_int = 12;
+pub const SQLITE_MUTEX_STATIC_VFS3  : c_int = 13;
+
+pub const SQLITE_TESTCTRL_FIRST              : c_int =  5;
+pub const SQLITE_TESTCTRL_PRNG_SAVE          : c_int =  5;
+pub const SQLITE_TESTCTRL_PRNG_RESTORE       : c_int =  6;
+pub const SQLITE_TESTCTRL_PRNG_RESET         : c_int =  7;
+pub const SQLITE_TESTCTRL_BITVEC_TEST        : c_int =  8;
+pub const SQLITE_TESTCTRL_FAULT_INSTALL      : c_int =  9;
+pub const SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS: c_int = 10;
+pub const SQLITE_TESTCTRL_PENDING_BYTE       : c_int = 11;
+pub const SQLITE_TESTCTRL_ASSERT             : c_int = 12;
+pub const SQLITE_TESTCTRL_ALWAYS             : c_int = 13;
+pub const SQLITE_TESTCTRL_RESERVE            : c_int = 14;
+pub const SQLITE_TESTCTRL_OPTIMIZATIONS      : c_int = 15;
+pub const SQLITE_TESTCTRL_ISKEYWORD          : c_int = 16;
+pub const SQLITE_TESTCTRL_SCRATCHMALLOC      : c_int = 17;
+pub const SQLITE_TESTCTRL_LOCALTIME_FAULT    : c_int = 18;
+pub const SQLITE_TESTCTRL_EXPLAIN_STMT       : c_int = 19;
+pub const SQLITE_TESTCTRL_NEVER_CORRUPT      : c_int = 20;
+pub const SQLITE_TESTCTRL_VDBE_COVERAGE      : c_int = 21;
+pub const SQLITE_TESTCTRL_BYTEORDER          : c_int = 22;
+pub const SQLITE_TESTCTRL_ISINIT             : c_int = 23;
+pub const SQLITE_TESTCTRL_SORTER_MMAP        : c_int = 24;
+pub const SQLITE_TESTCTRL_IMPOSTER           : c_int = 25;
+pub const SQLITE_TESTCTRL_LAST               : c_int = 25;
+
+pub const SQLITE_STATUS_MEMORY_USED       : c_int = 0;
+pub const SQLITE_STATUS_PAGECACHE_USED    : c_int = 1;
+pub const SQLITE_STATUS_PAGECACHE_OVERFLOW: c_int = 2;
+pub const SQLITE_STATUS_SCRATCH_USED      : c_int = 3;
+pub const SQLITE_STATUS_SCRATCH_OVERFLOW  : c_int = 4;
+pub const SQLITE_STATUS_MALLOC_SIZE       : c_int = 5;
+pub const SQLITE_STATUS_PARSER_STACK      : c_int = 6;
+pub const SQLITE_STATUS_PAGECACHE_SIZE    : c_int = 7;
+pub const SQLITE_STATUS_SCRATCH_SIZE      : c_int = 8;
+pub const SQLITE_STATUS_MALLOC_COUNT      : c_int = 9;
+
+pub const SQLITE_DBSTATUS_LOOKASIDE_USED     : c_int =  0;
+pub const SQLITE_DBSTATUS_CACHE_USED         : c_int =  1;
+pub const SQLITE_DBSTATUS_SCHEMA_USED        : c_int =  2;
+pub const SQLITE_DBSTATUS_STMT_USED          : c_int =  3;
+pub const SQLITE_DBSTATUS_LOOKASIDE_HIT      : c_int =  4;
+pub const SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE: c_int =  5;
+pub const SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL: c_int =  6;
+pub const SQLITE_DBSTATUS_CACHE_HIT          : c_int =  7;
+pub const SQLITE_DBSTATUS_CACHE_MISS         : c_int =  8;
+pub const SQLITE_DBSTATUS_CACHE_WRITE        : c_int =  9;
+pub const SQLITE_DBSTATUS_DEFERRED_FKS       : c_int = 10;
+pub const SQLITE_DBSTATUS_MAX                : c_int = 10;
+
+pub const SQLITE_STMTSTATUS_FULLSCAN_STEP: c_int = 1;
+pub const SQLITE_STMTSTATUS_SORT         : c_int = 2;
+pub const SQLITE_STMTSTATUS_AUTOINDEX    : c_int = 3;
+pub const SQLITE_STMTSTATUS_VM_STEP      : c_int = 4;
+
+pub const SQLITE_CHECKPOINT_PASSIVE : c_int = 0;
+pub const SQLITE_CHECKPOINT_FULL    : c_int = 1;
+pub const SQLITE_CHECKPOINT_RESTART : c_int = 2;
+pub const SQLITE_CHECKPOINT_TRUNCATE: c_int = 3;
+
+pub const SQLITE_VTAB_CONSTRAINT_SUPPORT: c_int = 1;
+
+pub const SQLITE_ROLLBACK: c_int = 1;
+pub const SQLITE_FAIL    : c_int = 3;
+pub const SQLITE_REPLACE : c_int = 5;
+
+pub const SQLITE_SCANSTAT_NLOOP   : c_int = 0;
+pub const SQLITE_SCANSTAT_NVISIT  : c_int = 1;
+pub const SQLITE_SCANSTAT_EST     : c_int = 2;
+pub const SQLITE_SCANSTAT_NAME    : c_int = 3;
+pub const SQLITE_SCANSTAT_EXPLAIN : c_int = 4;
+pub const SQLITE_SCANSTAT_SELECTID: c_int = 5;
