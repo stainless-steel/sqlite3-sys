@@ -14,10 +14,10 @@ extern crate sqlcipher_provider;
 
 use libc::{c_char, c_double, c_int, c_uchar, c_uint, c_void};
 
-mod constants;
+mod consts;
 mod types;
 
-pub use constants::*;
+pub use consts::*;
 pub use types::*;
 
 extern "C" {
