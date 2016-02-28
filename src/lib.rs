@@ -6,7 +6,7 @@
 
 extern crate libc;
 
-#[cfg(not(feature = "sqlcipher"))]
+#[cfg(feature = "standard")]
 extern crate sqlite3_provider;
 
 #[cfg(feature = "sqlcipher")]
