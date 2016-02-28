@@ -18,3 +18,8 @@ pkg-config = "0.3"
 
 [dev-dependencies]
 temporary = "0.5"
+
+[features]
+# Link against sqlcipher, instead of sqlite3, enabling support for
+# transparent database encryption.
+sqlcipher = []
