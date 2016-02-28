@@ -253,9 +253,9 @@ pub const SQLITE_LIMIT_WORKER_THREADS     : c_int = 11;
 
 pub const SQLITE_INTEGER: c_int = 1;
 pub const SQLITE_FLOAT  : c_int = 2;
+pub const SQLITE_TEXT   : c_int = 3;
 pub const SQLITE_BLOB   : c_int = 4;
 pub const SQLITE_NULL   : c_int = 5;
-pub const SQLITE3_TEXT  : c_int = 3;
 
 pub const SQLITE_UTF8         : c_int = 1;
 pub const SQLITE_UTF16LE      : c_int = 2;
