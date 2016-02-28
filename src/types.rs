@@ -11,11 +11,8 @@ use libc::{c_char, c_int, c_longlong, c_ulonglong, c_void};
 #[repr(C)] pub struct sqlite3_value;
 #[repr(C)] pub struct sqlite3_vfs;
 
-pub type sqlite_int64 = c_longlong;
-pub type sqlite_uint64 = c_ulonglong;
-
-pub type sqlite3_int64 = sqlite_int64;
-pub type sqlite3_uint64 = sqlite_uint64;
+pub type sqlite3_int64 = c_longlong;
+pub type sqlite3_uint64 = c_ulonglong;
 
 pub type sqlite3_void_callback = extern "C" fn(*mut c_void);
 
