@@ -72,8 +72,8 @@ extern "C" {
     pub fn sqlite3_column_text16(p: *mut sqlite3_stmt, n: c_int) -> *const c_void;
     pub fn sqlite3_column_type(p: *mut sqlite3_stmt, n: c_int) -> c_int;
     pub fn sqlite3_column_value(p: *mut sqlite3_stmt, n: c_int) -> *mut sqlite3_value;
-    pub fn sqlite3_commit_hook(p: *mut sqlite3, f: Option<sqlite3_void_callback>, p: *mut c_void)
-                               -> *mut c_void;
+    pub fn sqlite3_commit_hook(p: *mut sqlite3, f: Option<sqlite3_commit_hook_callback>,
+                               p: *mut c_void) -> *mut c_void;
     pub fn sqlite3_compileoption_get(n: c_int) -> *const c_char;
     pub fn sqlite3_compileoption_used(p: *const c_char) -> c_int;
     pub fn sqlite3_complete(p: *const c_char) -> c_int;

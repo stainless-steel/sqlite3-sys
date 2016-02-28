@@ -25,6 +25,7 @@ pub type sqlite3_collation_need_callback = extern "C" fn(*mut c_void, *mut sqlit
                                                          *const c_char);
 pub type sqlite3_collation_need16_callback = extern "C" fn(*mut c_void, *mut sqlite3, c_int,
                                                            *const c_void);
+pub type sqlite3_commit_hook_callback = extern "C" fn(*mut c_void) -> c_int;
 pub type sqlite3_create_collation_callback = extern "C" fn(*mut c_void, c_int, *const c_void,
                                                            c_int, *const c_void) -> c_int;
 pub type sqlite3_create_collation16_callback = extern "C" fn(*mut c_void, c_int, *const c_void,
