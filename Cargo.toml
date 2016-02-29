@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-sys"
-version = "0.9.1"
+version = "0.9.2"
 license = "Apache-2.0/MIT"
 authors = [
   "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
@@ -21,11 +21,11 @@ sqlcipher = ["sqlcipher-provider"]
 libc = "0.2"
 
 [dependencies.sqlite3-provider]
-version = "0.0.1"
+version = "0.1"
 optional = true
 
 [dependencies.sqlcipher-provider]
-version = "0.0.1"
+version = "0.1"
 optional = true
 
 [dev-dependencies]
