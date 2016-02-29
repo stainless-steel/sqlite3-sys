@@ -85,7 +85,7 @@ extern "C" {
     pub fn sqlite3_create_collation16(p: *mut sqlite3, p: *const c_void, n: c_int, p: *mut c_void,
                                       f: Option<sqlite3_create_collation16_callback>) -> c_int;
     pub fn sqlite3_create_collation_v2(p: *mut sqlite3, p: *const c_char, n: c_int, p: *mut c_void,
-                                       f: Option<sqlite3_create_collation_v2_callback>,
+                                       f: Option<sqlite3_create_collation_callback>,
                                        f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_create_function(p: *mut sqlite3, p: *const c_char, n: c_int, n: c_int,
                                    p: *mut c_void, f: Option<sqlite3_create_function_callback1>,
