@@ -12,8 +12,8 @@ will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [1]: https://www.sqlite.org
 
-[version-img]: https://img.shields.io/crates/v/sqlite3-sys.svg
-[version-url]: https://crates.io/crates/sqlite3-sys
+[doc]: https://stainless-steel.github.io/sqlite3-sys
 [status-img]: https://travis-ci.org/stainless-steel/sqlite3-sys.svg?branch=master
 [status-url]: https://travis-ci.org/stainless-steel/sqlite3-sys
-[doc]: https://stainless-steel.github.io/sqlite3-sys
+[version-img]: https://img.shields.io/crates/v/sqlite3-sys.svg
+[version-url]: https://crates.io/crates/sqlite3-sys
