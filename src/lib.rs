@@ -7,10 +7,10 @@
 extern crate libc;
 
 #[cfg(feature = "standard")]
-extern crate sqlite3_provider;
+extern crate sqlite3_src;
 
 #[cfg(feature = "sqlcipher")]
-extern crate sqlcipher_provider;
+extern crate sqlcipher_src;
 
 mod constants;
 mod functions;

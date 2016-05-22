@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-sys"
-version = "0.9.2"
+version = "0.9.3"
 license = "Apache-2.0/MIT"
 authors = [
   "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
@@ -14,19 +14,19 @@ repository = "https://github.com/stainless-steel/sqlite3-sys"
 [features]
 default = ["standard"]
 
-standard = ["sqlite3-provider"]
-sqlcipher = ["sqlcipher-provider"]
+standard = ["sqlite3-src"]
+sqlcipher = ["sqlcipher-src"]
 
 [dependencies]
 libc = "0.2"
 
-[dependencies.sqlite3-provider]
+[dependencies.sqlite3-src]
 version = "0.1"
 optional = true
 
-[dependencies.sqlcipher-provider]
+[dependencies.sqlcipher-src]
 version = "0.1"
 optional = true
 
 [dev-dependencies]
-temporary = "0.5"
+temporary = "0.6"
