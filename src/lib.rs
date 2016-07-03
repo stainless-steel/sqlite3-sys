@@ -6,11 +6,8 @@
 
 extern crate libc;
 
-#[cfg(feature = "standard")]
+#[cfg(feature = "linkage")]
 extern crate sqlite3_src;
-
-#[cfg(feature = "sqlcipher")]
-extern crate sqlcipher_src;
 
 mod constants;
 mod functions;
