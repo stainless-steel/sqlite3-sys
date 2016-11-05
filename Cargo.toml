@@ -1,13 +1,13 @@
 [package]
 name = "sqlite3-sys"
-version = "0.11.0"
+version = "0.11.1"
 license = "Apache-2.0/MIT"
 authors = [
   "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
   "Ivan Ukhov <ivan.ukhov@gmail.com>",
 ]
 description = "The package provides bindings to SQLite."
-documentation = "https://stainless-steel.github.io/sqlite3-sys"
+documentation = "https://docs.rs/sqlite3-sys"
 homepage = "https://github.com/stainless-steel/sqlite3-sys"
 repository = "https://github.com/stainless-steel/sqlite3-sys"
 
