@@ -3,8 +3,8 @@ name = "sqlite3-sys"
 version = "0.11.1"
 license = "Apache-2.0/MIT"
 authors = [
-  "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
-  "Ivan Ukhov <ivan.ukhov@gmail.com>",
+    "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
+    "Ivan Ukhov <ivan.ukhov@gmail.com>",
 ]
 description = "The package provides bindings to SQLite."
 documentation = "https://docs.rs/sqlite3-sys"
