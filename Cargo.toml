@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-sys"
-version = "0.11.1"
+version = "0.11.2"
 license = "Apache-2.0/MIT"
 authors = [
     "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
@@ -10,6 +10,8 @@ description = "The package provides bindings to SQLite."
 documentation = "https://docs.rs/sqlite3-sys"
 homepage = "https://github.com/stainless-steel/sqlite3-sys"
 repository = "https://github.com/stainless-steel/sqlite3-sys"
+categories = ["database-interfaces", "external-ffi-bindings"]
+keywords = ["database"]
 
 [features]
 default = ["linkage"]
