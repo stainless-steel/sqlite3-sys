@@ -1,15 +1,15 @@
 use libc::{c_char, c_int, c_longlong, c_ulonglong, c_void};
 
-#[repr(C)] pub struct sqlite3;
-#[repr(C)] pub struct sqlite3_backup;
-#[repr(C)] pub struct sqlite3_blob;
-#[repr(C)] pub struct sqlite3_context;
-#[repr(C)] pub struct sqlite3_module;
-#[repr(C)] pub struct sqlite3_mutex;
-#[repr(C)] pub struct sqlite3_snapshot;
-#[repr(C)] pub struct sqlite3_stmt;
-#[repr(C)] pub struct sqlite3_value;
-#[repr(C)] pub struct sqlite3_vfs;
+pub enum sqlite3 {}
+pub enum sqlite3_backup {}
+pub enum sqlite3_blob {}
+pub enum sqlite3_context {}
+pub enum sqlite3_module {}
+pub enum sqlite3_mutex {}
+pub enum sqlite3_snapshot {}
+pub enum sqlite3_stmt {}
+pub enum sqlite3_value {}
+pub enum sqlite3_vfs {}
 
 pub type sqlite3_int64 = c_longlong;
 pub type sqlite3_uint64 = c_ulonglong;
