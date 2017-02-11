@@ -3,6 +3,7 @@
 //! [1]: https://www.sqlite.org
 
 #![allow(improper_ctypes, non_camel_case_types)]
+#![no_std]
 
 extern crate libc;
 
