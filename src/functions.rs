@@ -3,6 +3,8 @@ use libc::{c_char, c_double, c_int, c_uchar, c_uint, c_void};
 use types::*;
 
 extern "C" {
+    pub fn sqlite3_activate_cerod(p: *const c_char);
+    pub fn sqlite3_activate_see(p: *const c_char);
     pub fn sqlite3_aggregate_context(p: *mut sqlite3_context, n: c_int) -> *mut c_void;
     pub fn sqlite3_aggregate_count(p: *mut sqlite3_context) -> c_int;
     pub fn sqlite3_auto_extension(f: Option<sqlite3_auto_extension_callback>) -> c_int;
@@ -106,7 +108,6 @@ extern "C" {
                                     p: *mut c_void, f: Option<sqlite3_callback>) -> c_int;
     pub fn sqlite3_data_count(p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_db_cacheflush(p: *mut sqlite3) -> c_int;
-
     pub fn sqlite3_db_config(p: *mut sqlite3, n: c_int, ...) -> c_int;
     pub fn sqlite3_db_filename(p: *mut sqlite3, p: *const c_char) -> *const c_char;
     pub fn sqlite3_db_handle(p: *mut sqlite3_stmt) -> *mut sqlite3;
@@ -127,6 +128,7 @@ extern "C" {
     pub fn sqlite3_expired(p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_extended_errcode(p: *mut sqlite3) -> c_int;
     pub fn sqlite3_extended_result_codes(p: *mut sqlite3, n: c_int) -> c_int;
+    pub fn sqlite3_expanded_sql(p: *mut sqlite3_stmt) -> *mut c_char;
     pub fn sqlite3_file_control(p: *mut sqlite3, p: *const c_char, n: c_int, p: *mut c_void)
                                 -> c_int;
     pub fn sqlite3_finalize(p: *mut sqlite3_stmt) -> c_int;
@@ -139,6 +141,8 @@ extern "C" {
     pub fn sqlite3_global_recover() -> c_int;
     pub fn sqlite3_initialize() -> c_int;
     pub fn sqlite3_interrupt(p: *mut sqlite3);
+    pub fn sqlite3_key(p: *mut sqlite3, p: *const c_void, n: c_int) -> c_int;
+    pub fn sqlite3_key_v2(p: *mut sqlite3, p: *const c_char, p: *const c_void, n: c_int) -> c_int;
     pub fn sqlite3_last_insert_rowid(p: *mut sqlite3) -> sqlite3_int64;
     pub fn sqlite3_libversion() -> *const c_char;
     pub fn sqlite3_libversion_number() -> c_int;
@@ -152,7 +156,7 @@ extern "C" {
                                 n: sqlite3_int64) -> c_int;
     pub fn sqlite3_memory_highwater(n: c_int) -> sqlite3_int64;
     pub fn sqlite3_memory_used() -> sqlite3_int64;
-    pub fn sqlite3_mprintf(p: *const c_char,...) -> *mut c_char;
+    pub fn sqlite3_mprintf(p: *const c_char, ...) -> *mut c_char;
     pub fn sqlite3_msize(p: *mut c_void) -> sqlite3_uint64;
     pub fn sqlite3_mutex_alloc(n: c_int) -> *mut sqlite3_mutex;
     pub fn sqlite3_mutex_enter(p: *mut sqlite3_mutex);
@@ -177,6 +181,12 @@ extern "C" {
                                 pp: *mut *mut sqlite3_stmt, pp: *mut *const c_void) -> c_int;
     pub fn sqlite3_prepare_v2(p: *mut sqlite3, p: *const c_char, n: c_int,
                               pp: *mut *mut sqlite3_stmt, pp: *mut *const c_char) -> c_int;
+    pub fn sqlite3_preupdate_count(p: *mut sqlite3) -> c_int;
+    pub fn sqlite3_preupdate_depth(p: *mut sqlite3) -> c_int;
+    pub fn sqlite3_preupdate_hook(p: *mut sqlite3, f: Option<sqlite3_preupdate_hook_callback>,
+                                  p: *mut c_void) -> *mut c_void;
+    pub fn sqlite3_preupdate_new(p: *mut sqlite3, n: c_int, pp: *mut *mut sqlite3_value) -> c_int;
+    pub fn sqlite3_preupdate_old(p: *mut sqlite3, n: c_int, pp: *mut *mut sqlite3_value) -> c_int;
     pub fn sqlite3_profile(p: *mut sqlite3, f: Option<sqlite3_profile_callback>, p: *mut c_void)
                            -> *mut c_void;
     pub fn sqlite3_progress_handler(p: *mut sqlite3, n: c_int,
@@ -184,6 +194,9 @@ extern "C" {
     pub fn sqlite3_randomness(n: c_int, p: *mut c_void);
     pub fn sqlite3_realloc(p: *mut c_void, n: c_int) -> *mut c_void;
     pub fn sqlite3_realloc64(p: *mut c_void, n: sqlite3_uint64) -> *mut c_void;
+    pub fn sqlite3_rekey(p: *mut sqlite3, p: *const c_void, n: c_int) -> c_int;
+    pub fn sqlite3_rekey_v2(p: *mut sqlite3, p: *const c_char, p: *const c_void, n: c_int)
+                            -> c_int;
     pub fn sqlite3_release_memory(n: c_int) -> c_int;
     pub fn sqlite3_reset(p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_reset_auto_extension();
@@ -198,7 +211,6 @@ extern "C" {
     pub fn sqlite3_result_error_nomem(p: *mut sqlite3_context);
     pub fn sqlite3_result_error_toobig(p: *mut sqlite3_context);
     pub fn sqlite3_result_int(p: *mut sqlite3_context, n: c_int);
-
     pub fn sqlite3_result_int64(p: *mut sqlite3_context, n: sqlite3_int64);
     pub fn sqlite3_result_null(p: *mut sqlite3_context);
     pub fn sqlite3_result_subtype(p: *mut sqlite3_context, n: c_uint);
@@ -223,11 +235,13 @@ extern "C" {
                                f: Option<sqlite3_callback>);
     pub fn sqlite3_shutdown() -> c_int;
     pub fn sqlite3_sleep(n: c_int) -> c_int;
+    pub fn sqlite3_snapshot_cmp(p: *mut sqlite3_snapshot, p: *mut sqlite3_snapshot) -> c_int;
     pub fn sqlite3_snapshot_free(p: *mut sqlite3_snapshot);
     pub fn sqlite3_snapshot_get(p: *mut sqlite3, p: *const c_char, pp: *mut *mut sqlite3_snapshot)
                                 -> c_int;
     pub fn sqlite3_snapshot_open(p: *mut sqlite3, p: *const c_char, p: *mut sqlite3_snapshot)
                                  -> c_int;
+    pub fn sqlite3_snapshot_recover(p: *mut sqlite3, p: *const c_char) -> c_int;
     pub fn sqlite3_snprintf(n: c_int, p: *mut c_char, p: *const c_char, ...) -> *mut c_char;
     pub fn sqlite3_soft_heap_limit(n: c_int);
     pub fn sqlite3_soft_heap_limit64(n: sqlite3_int64) -> sqlite3_int64;
@@ -247,6 +261,7 @@ extern "C" {
     pub fn sqlite3_stricmp(p: *const c_char, p: *const c_char) -> c_int;
     pub fn sqlite3_strlike(p: *const c_char, p: *const c_char, n: c_uint) -> c_int;
     pub fn sqlite3_strnicmp(p: *const c_char, p: *const c_char, n: c_int) -> c_int;
+    pub fn sqlite3_system_errno(p: *mut sqlite3) -> c_int;
     pub fn sqlite3_table_column_metadata(p: *mut sqlite3, p: *const c_char, p: *const c_char,
                                          p: *const c_char, pp: *mut *const c_char,
                                          pp: *mut *const c_char, p: *mut c_int, p: *mut c_int,
@@ -257,6 +272,8 @@ extern "C" {
     pub fn sqlite3_total_changes(p: *mut sqlite3) -> c_int;
     pub fn sqlite3_trace(p: *mut sqlite3, f: Option<sqlite3_trace_callback>, p: *mut c_void)
                          -> *mut c_void;
+    pub fn sqlite3_trace_v2(p: *mut sqlite3, n: c_uint, f: Option<sqlite3_trace_v2_callback>,
+                            p: *mut c_void) -> c_int;
     pub fn sqlite3_transfer_bindings(p: *mut sqlite3_stmt, p: *mut sqlite3_stmt) -> c_int;
     pub fn sqlite3_unlock_notify(p: *mut sqlite3, f: Option<sqlite3_unlock_notify_callback>,
                                  p: *mut c_void) -> c_int;
