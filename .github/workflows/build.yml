@@ -3,25 +3,19 @@ name: build
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   macos:
-    name: macOS
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v1
-      - name: Run the test suite
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
+      - uses: actions-rs/cargo@v1
+        with: {command: test}
 
   ubuntu:
-    name: Ubuntu
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - name: Run the test suite
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
+      - uses: actions-rs/cargo@v1
+        with: {command: test}
