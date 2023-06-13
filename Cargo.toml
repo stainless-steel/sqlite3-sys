@@ -16,6 +16,7 @@ keywords = ["database"]
 [features]
 default = ["linkage"]
 linkage = ["sqlite3-src"]
+bundled = ["sqlite3-src/bundled"]
 
 [dependencies]
 libc = "0.2"
