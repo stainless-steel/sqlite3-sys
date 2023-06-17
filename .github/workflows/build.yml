@@ -6,6 +6,15 @@ on:
       - main
 
 jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-rs/toolchain@v1
+        with: {toolchain: stable, components: clippy, rustfmt}
+      - run: cargo clippy -- -D warnings
+      - run: cargo fmt --all -- --check
+
   test:
     strategy:
       matrix:

@@ -8,6 +8,7 @@
 #[cfg(feature = "linkage")]
 extern crate sqlite3_src;
 
+#[rustfmt::skip]
 mod constants;
 mod functions;
 mod types;
