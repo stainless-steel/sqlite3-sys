@@ -5,8 +5,6 @@
 #![allow(improper_ctypes, non_camel_case_types)]
 #![no_std]
 
-extern crate libc;
-
 #[cfg(feature = "linkage")]
 extern crate sqlite3_src;
 

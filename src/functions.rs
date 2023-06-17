@@ -1,6 +1,6 @@
 use libc::{c_char, c_double, c_int, c_uchar, c_uint, c_void};
 
-use types::*;
+use crate::types::*;
 
 extern "C" {
     pub fn sqlite3_activate_cerod(p: *const c_char);
