@@ -6,6 +6,7 @@ license = "Apache-2.0/MIT"
 authors = [
     "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
+    "Jean-Daniel Michaud <jean.daniel.michaud@gmail.com>",
     "Vincenzo Palazzo <vincenzopalazzodev@gmail.com>",
 ]
 description = "The package provides bindings to SQLite."
