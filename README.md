@@ -2,6 +2,16 @@
 
 The package provides bindings to [SQLite].
 
+## Development
+
+```shell
+cargo install bindgen-cli
+git clone https://github.com/stainless-steel/sqlite3-src.git --recursive
+bindgen --use-core sqlite3-src/source/sqlite3.h \
+  | sed -E "s/^pub const ([0-9A-Z_]+): u32/pub const \1: ::core::ffi::c_int/" \
+  > src/bindings.rs
+```
+
 ## Contribution
 
 Your contribution is highly appreciated. Do not hesitate to open an issue or a

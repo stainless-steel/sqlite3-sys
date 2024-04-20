@@ -21,12 +21,6 @@ default = ["linkage"]
 bundled = ["sqlite3-src/bundled"]
 linkage = ["sqlite3-src"]
 
-[dependencies]
-libc = "0.2"
-
 [dependencies.sqlite3-src]
 version = "0.6"
 optional = true
-
-[dev-dependencies]
-temporary = "0.6"

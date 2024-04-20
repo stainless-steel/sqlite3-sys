@@ -2,17 +2,12 @@
 //!
 //! [1]: https://www.sqlite.org
 
-#![allow(improper_ctypes, non_camel_case_types)]
+#![allow(non_camel_case_types, non_snake_case)]
 #![no_std]
 
 #[cfg(feature = "linkage")]
 extern crate sqlite3_src;
 
-#[rustfmt::skip]
-mod constants;
-mod functions;
-mod types;
+mod bindings;
 
-pub use constants::*;
-pub use functions::*;
-pub use types::*;
+pub use bindings::*;

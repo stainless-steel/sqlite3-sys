@@ -14,8 +14,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: rustup toolchain install stable --profile=minimal --component clippy --component rustfmt
-      - run: cargo clippy -- -D warnings
+      - run: rustup toolchain install stable --profile=minimal --component rustfmt
       - run: cargo fmt --all -- --check
 
   test:
