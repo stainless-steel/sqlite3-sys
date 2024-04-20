@@ -25,9 +25,10 @@ fn workflow() {
 }
 
 unsafe fn test_failure(database: *mut sqlite3) {
+    let query = c_string!(":)");
     match sqlite3_exec(
         database,
-        c_string!(":)").as_ptr(),
+        query.as_ptr(),
         None,
         ptr::null_mut(),
         ptr::null_mut(),
