@@ -18,8 +18,11 @@ keywords = ["database"]
 
 [features]
 default = ["linkage"]
-bundled = ["sqlite3-src/bundled"]
+
 linkage = ["sqlite3-src"]
+bundled = ["sqlite3-src/bundled"]
+
+encryption = []
 
 [dependencies.sqlite3-src]
 version = "0.6"

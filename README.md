@@ -2,6 +2,16 @@
 
 The package provides bindings to [SQLite].
 
+The following Cargo features are supported:
+
+* `linkage` creates a dependency on `sqlite3-src`, which links to a suitable
+  SQLite library;
+* `bundled` compiles SQLite from the source code, ignoring any libraries that
+  might be installed in the system; and
+* `encryption` enables bindings to the [SQLite Encryption Extension], which is
+  closed source and hence requires purchasing a license and installing SQLite
+  manually.
+
 ## Development
 
 ```shell
@@ -19,6 +29,7 @@ pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [SQLite]: https://www.sqlite.org
+[SQLite Encryption Extension]: https://www.sqlite.org/see/doc/release/www/index.wiki
 
 [build-img]: https://github.com/stainless-steel/sqlite3-sys/workflows/build/badge.svg
 [build-url]: https://github.com/stainless-steel/sqlite3-sys/actions/workflows/build.yml
