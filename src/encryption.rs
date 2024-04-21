@@ -1,6 +1,6 @@
 use core::ffi::{c_char, c_int, c_void};
 
-use crate::bindings::sqlite3;
+use crate::base::sqlite3;
 
 extern "C" {
     pub fn sqlite3_key(db: *mut sqlite3, pKey: *const c_void, nKey: c_int) -> c_int;

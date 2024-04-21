@@ -19,10 +19,10 @@
 #[cfg(feature = "linkage")]
 extern crate sqlite3_src;
 
-mod bindings;
+mod base;
 #[cfg(feature = "encryption")]
 mod encryption;
 
-pub use bindings::*;
+pub use base::*;
 #[cfg(feature = "encryption")]
 pub use encryption::*;
