@@ -7,23 +7,22 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   check:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: rustup toolchain install stable --profile=minimal --component rustfmt
+      - run: rustup toolchain install stable --profile=minimal --component=rustfmt
       - run: cargo fmt --all -- --check
 
   test:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - run: rustup toolchain install stable --profile=minimal
       - run: cargo test
-      - run: cargo test --features bundled
+      - run: cargo test --features=bundled
