@@ -5,7 +5,9 @@
 //! * `linkage` creates a dependency on `sqlite3-src`, which links to a suitable
 //!   SQLite library;
 //! * `bundled` compiles SQLite from the source code, ignoring any libraries that
-//!   might already be installed; and
+//!   might already be installed;
+//! * `system` compiles using the system-provided SQLite and does not fall back to
+//!   bundled sources.
 //! * `encryption` enables bindings to the [SQLite Encryption Extension], which is
 //!   closed source and hence requires purchasing a license and installing SQLite
 //!   manually.
