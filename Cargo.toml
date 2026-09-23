@@ -4,6 +4,7 @@ version = "0.18.0"
 edition = "2021"
 license = "Apache-2.0 OR MIT"
 authors = [
+    "Hugo Osvaldo Barrera <hugo@whynothugo.nl>",
     "Ivan Stankovic <pokemon@fly.srk.fer.hr>",
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
     "Jean-Daniel Michaud <jean.daniel.michaud@gmail.com>",
