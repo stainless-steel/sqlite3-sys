@@ -21,6 +21,7 @@ default = ["linkage"]
 
 linkage = ["sqlite3-src"]
 bundled = ["sqlite3-src/bundled"]
+system = ["sqlite3-src/system"]
 
 encryption = []
 
