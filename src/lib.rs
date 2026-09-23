@@ -2,13 +2,15 @@
 //!
 //! The following Cargo features are supported:
 //!
-//! * `linkage` creates a dependency on `sqlite3-src`, which links to a suitable
+//! * `linkage` to create a dependency on `sqlite3-src`, which links to a suitable
 //!   SQLite library;
-//! * `bundled` compiles SQLite from the source code, ignoring any libraries that
-//!   might already be installed;
-//! * `system` compiles using the system-provided SQLite and does not fall back to
-//!   bundled sources.
-//! * `encryption` enables bindings to the [SQLite Encryption Extension], which is
+//! * `bundled` to activate the linkage and compile SQLite from the source code that
+//!   comes with the package, ignoring any SQLite libraries that might be installed
+//!   in the system;
+//! * `system` to activate the linkage and use the SQLite library that is already
+//!   installed in the system, ignoring the possibility of compiling it from the
+//!   source code; and
+//! * `encryption` to enable bindings to the [SQLite Encryption Extension], which is
 //!   closed source and hence requires purchasing a license and installing SQLite
 //!   manually.
 //!
